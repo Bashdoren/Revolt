@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Revolt | Highlights</title>
+    <title>Team Revolt | Official</title>
     <style>
         body {
             background-color: #000;
@@ -11,107 +11,122 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 20px;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .yellow { color: #ffcc00; }
         .blue { color: #00e5ff; }
 
-        /* Секция МАТЧА (раскрывающаяся) */
-        .match-box {
+        /* ОСНОВНОЙ СОСТАВ */
+        .main-roster {
+            width: 100%;
             max-width: 500px;
-            margin: 20px auto;
-            border: 2px solid #333;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 0 15px rgba(255, 204, 0, 0.1);
+            text-align: center;
+            margin-bottom: 20px;
         }
 
-        .match-trigger {
-            background: #1a1a1a;
-            padding: 15px;
+        .player-card {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .role {
+            font-size: 0.6em;
+            background: #ffcc00;
+            color: #000;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 5px;
+        }
+
+        /* КНОПКИ СОЦСЕТЕЙ */
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.8em;
+            transition: 0.3s;
+        }
+
+        .tg { background: #24A1DE; color: white; }
+        .tk { background: #ff0050; color: white; }
+        .tw { background: #9146FF; color: white; }
+        .btn:hover { opacity: 0.8; transform: scale(1.05); }
+
+        /* МАТЧ */
+        .match-section {
+            width: 100%;
+            max-width: 500px;
+            border: 2px solid #333;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #111;
+        }
+
+        .match-header {
+            padding: 20px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: 0.3s;
+            background: #1a1a1a;
         }
 
-        .match-trigger:hover { background: #222; border-color: #ffcc00; }
+        .score { background: #ffcc00; color: #000; padding: 5px 12px; border-radius: 5px; font-weight: bold; }
 
-        .match-content {
-            display: none; /* Скрыто до нажатия */
-            padding: 20px;
-            background: #0a0a0a;
-            border-top: 2px solid #333;
-        }
+        .match-details { display: none; padding: 20px; background: #050505; border-top: 1px solid #333; }
 
-        /* Стиль для видео (чтобы было адаптивным на телефоне) */
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%; /* Соотношение сторон 16:9 */
-            height: 0;
-            overflow: hidden;
-            margin-bottom: 20px; /* Отступ перед составами */
-            border-radius: 8px;
-            border: 1px solid #333;
-        }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; margin-bottom: 20px; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px; }
 
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            text-align: left;
-        }
-
-        .grid h4 { margin-top: 0; font-size: 0.8em; color: #666; text-transform: uppercase; }
-
-        .list { list-style: none; padding: 0; margin: 0; font-size: 0.9em; }
-        .list li { padding: 5px 0; border-bottom: 1px solid #111; }
-
-        .subs {
-            margin-top: 20px;
-            font-size: 0.8em;
-            color: #888;
-            border-top: 1px dashed #333;
-            padding-top: 10px;
-        }
+        .rosters { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; text-align: left; }
+        .list { list-style: none; padding: 0; font-size: 0.9em; }
+        .list li { padding: 4px 0; border-bottom: 1px solid #1a1a1a; }
+        .subs { margin-top: 20px; font-size: 0.8em; color: #777; border-top: 1px dashed #333; padding-top: 10px; }
     </style>
 </head>
 <body>
 
-    <h1>Последние игры</h1>
-    
-    <div class="match-box">
-        <div class="match-trigger" onclick="toggleMatch()">
-            <span class="yellow" style="font-weight:bold">REVOLT</span>
-            <span style="background:#333; padding: 2px 10px; border-radius: 4px;">16 : 13</span>
-            <span class="blue" style="font-weight:bold">AURORA</span>
+    <div class="main-roster">
+        <h2 class="yellow">Основа Team Revolt</h2>
+        <div class="player-card">Fon1m <span class="role">Capitain 🎖️</span></div>
+        <div class="player-card">peek? <span class="role">The Sniper 🎯</span></div>
+        <div class="player-card">Триксис <span class="role">Player 🎮</span></div>
+        <div class="player-card">Gloderi <span class="role">Player 🎮</span></div>
+        <div class="player-card">l4mice <span class="role">rifler ⚡</span></div>
+    </div>
+
+    <div class="social-links">
+        <a href="https://t.me/Fon1m" class="btn tg">Telegram</a>
+        <a href="https://www.tiktok.com/@Fon1m" class="btn tk">TikTok</a>
+        <a href="https://www.twitch.tv/Fon1m" class="btn tw">Twitch</a>
+    </div>
+
+    <div class="match-section">
+        <div class="match-header" onclick="toggleMatch()">
+            <b class="yellow">REVOLT</b>
+            <span class="score">16 : 13</span>
+            <b class="blue">AURORA</b>
         </div>
 
-        <div id="matchDetails" class="match-content">
-            
-            <div class="video-wrapper">
-                <iframe 
-                    src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                    title="YouTube video player" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowfullscreen>
-                </iframe>
+        <div id="details" class="match-details">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
             </div>
 
-            <div class="grid">
+            <div class="rosters">
                 <div>
-                    <h4>Lineup Revolt</h4>
+                    <h4 style="font-size:0.7em; color:#555">Lineup Revolt</h4>
                     <ul class="list">
                         <li>⚡ Fon1m</li>
                         <li>⚡ peek?</li>
@@ -121,7 +136,7 @@
                     </ul>
                 </div>
                 <div>
-                    <h4 class="blue">Lineup Aurora</h4>
+                    <h4 class="blue" style="font-size:0.7em">Lineup Aurora</h4>
                     <ul class="list">
                         <li>👤 Easyyy</li>
                         <li>👤 k1toemy</li>
@@ -131,21 +146,14 @@
                     </ul>
                 </div>
             </div>
-            
-            <div class="subs">
-                <b class="yellow">ЗАПАС:</b> Кузя, Лайт.
-            </div>
+            <div class="subs"><b class="yellow">ЗАПАС:</b> Кузя, Лайт.</div>
         </div>
     </div>
 
     <script>
         function toggleMatch() {
-            var div = document.getElementById("matchDetails");
-            if (div.style.display === "block") {
-                div.style.display = "none";
-            } else {
-                div.style.display = "block";
-            }
+            var x = document.getElementById("details");
+            x.style.display = (x.style.display === "block") ? "none" : "block";
         }
     </script>
 
