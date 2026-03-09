@@ -23,80 +23,89 @@
             overflow-x: hidden;
         }
 
+        /* КОНТЕЙНЕР */
         .container {
             width: 95%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 10px;
         }
 
         header {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 60px 0 40px;
+            padding: 50px 0;
             background: linear-gradient(180deg, rgba(251, 255, 0, 0.1) 0%, transparent 100%);
         }
 
         .logo-text {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.5rem, 10vw, 4.5rem);
+            font-size: clamp(2.5rem, 8vw, 4rem);
             font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 12px;
             color: var(--primary);
-            margin: 0;
+            letter-spacing: 10px;
+            text-shadow: 0 0 20px rgba(251, 255, 0, 0.4);
         }
 
         h2 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 40px 0 20px;
-            text-transform: uppercase;
+            font-size: 1.2rem;
             border-left: 4px solid var(--primary);
             padding-left: 15px;
+            margin: 40px 0 20px;
+            text-transform: uppercase;
         }
 
+        /* СЕТКА ИГРОКОВ */
         .roster-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* По 2 игрока в ряд на мобиле */
+            grid-template-columns: repeat(2, 1fr);
             gap: 15px;
         }
 
+        /* КАРТОЧКА С ЭФФЕКТАМИ */
         .player-card {
             background: var(--card-bg);
-            border: 1px solid #222;
+            position: relative;
             overflow: hidden;
+            border-bottom: 3px solid #222; /* Обычная полоска */
+            transition: all 0.3s ease;
+            cursor: pointer;
             display: flex;
             flex-direction: column;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%);
+        }
+
+        /* ТО САМОЕ ЖЕЛТОЕ СВЕЧЕНИЕ ПРИ НАЖАТИИ */
+        .player-card:hover, .player-card:active {
+            border-bottom-color: var(--primary); /* Полоска становится желтой */
+            transform: translateY(-5px); /* Карточка чуть прыгает вверх */
+            background: #1a1a1a;
+            box-shadow: 0 10px 30px rgba(251, 255, 0, 0.2); /* Желтое свечение снизу */
         }
 
         .player-photo {
             width: 100%;
-            aspect-ratio: 1 / 1; 
+            aspect-ratio: 1 / 1;
             background: #000;
         }
 
         .player-img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* ФОТО ЦЕЛИКОМ, БЕЗ ОБРЕЗКИ */
+            object-fit: contain;
         }
 
         .player-info {
             padding: 12px;
-            background: #111;
         }
 
         .player-role {
             font-size: 0.6rem;
-            font-weight: 800;
             color: var(--primary);
             text-transform: uppercase;
-            display: block;
+            font-weight: 800;
         }
 
         .player-nick {
@@ -105,6 +114,7 @@
             font-family: 'Orbitron', sans-serif;
         }
 
+        /* МАТЧИ */
         .match-card {
             background: var(--card-bg);
             padding: 20px;
@@ -112,41 +122,37 @@
             justify-content: space-around;
             align-items: center;
             border: 1px solid #222;
-            margin-top: 10px;
+            border-left: 4px solid var(--primary);
         }
 
-        .vs-tag {
-            color: var(--primary);
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-        }
-
+        /* КНОПКИ СОЦСЕТЕЙ */
         .socials {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 15px;
             margin: 50px 0;
-            flex-wrap: wrap;
         }
 
         .soc-link {
-            padding: 10px 20px;
+            padding: 12px 20px;
             border: 1px solid #333;
             color: #fff;
             text-decoration: none;
-            font-weight: 700;
+            font-weight: bold;
             font-size: 0.8rem;
-            text-transform: uppercase;
+            transition: 0.3s;
         }
 
-        .sub-grid { opacity: 0.8; }
+        .soc-link:active {
+            background: var(--primary);
+            color: #000;
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <p class="logo-text">REVOLT</p>
-    <div style="color: #666; font-size: 0.8rem; margin-top: 10px; letter-spacing: 3px;">EST. 2024 | RUSSIA</div>
+    <div class="logo-text">REVOLT</div>
 </header>
 
 <div class="container">
@@ -178,54 +184,4 @@
             <div class="player-photo"><img src="kuzya.png" class="player-img"></div>
             <div class="player-info">
                 <span class="player-role">Rifler</span>
-                <div class="player-nick">Кузя</div>
-            </div>
-        </div>
-        <div class="player-card">
-            <div class="player-photo"><img src="peek.png" class="player-img"></div>
-            <div class="player-info">
-                <span class="player-role">Sniper</span>
-                <div class="player-nick">peek?</div>
-            </div>
-        </div>
-    </div>
-
-    <h2>Roster / <span style="color: #666">Запас</span></h2>
-    <div class="roster-grid sub-grid">
-        <div class="player-card">
-            <div class="player-info">
-                <span class="player-role">Substitute</span>
-                <div class="player-nick">Gloderik</div>
-            </div>
-        </div>
-        <div class="player-card">
-            <div class="player-info">
-                <span class="player-role">Substitute</span>
-                <div class="player-nick">l4mice</div>
-            </div>
-        </div>
-        <div class="player-card">
-            <div class="player-info">
-                <span class="player-role">Substitute</span>
-                <div class="player-nick">Veillon</div>
-            </div>
-        </div>
-    </div>
-
-    <h2>Schedule / <span style="color: var(--primary)">Матчи</span></h2>
-    <div class="match-card">
-        <div style="font-weight: bold;">REVOLT</div>
-        <div class="vs-tag">VS</div>
-        <div style="color: #666;">AURORA</div>
-    </div>
-
-    <div class="socials">
-        <a href="https://t.me/Revolt_Team12" target="_blank" class="soc-link">Telegram</a>
-        <a href="https://www.tiktok.com/@fon1m12" target="_blank" class="soc-link">TikTok</a>
-        <a href="https://www.twitch.tv/fon1m12" target="_blank" class="soc-link">Twitch</a>
-    </div>
-
-</div>
-
-</body>
-</html>
+                <div class="
