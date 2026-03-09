@@ -3,204 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Revolt | Official</title>
+    <title>Team Revolt | Highlights</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;600;800&display=swap');
-
-        :root {
-            --primary: #fbff00; 
-            --bg: #050505;
-            --card-bg: #111111;
-            --text: #ffffff;
-        }
-
         body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Exo 2', sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: 95%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 60px 0 40px;
-            background: linear-gradient(180deg, rgba(251, 255, 0, 0.1) 0%, transparent 100%);
-        }
-
-        .logo-text {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.5rem, 10vw, 4.5rem);
-            font-weight: 900;
-            letter-spacing: 12px;
-            color: var(--primary);
-            text-shadow: 0 0 20px rgba(251, 255, 0, 0.3);
-            margin: 0;
-        }
-
-        h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 40px 0 20px;
-            text-transform: uppercase;
-            border-left: 4px solid var(--primary);
-            padding-left: 15px;
-        }
-
-        .roster-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        /* КАРТОЧКА БЕЗ ФОТО */
-        .player-card {
-            background: var(--card-bg);
-            padding: 20px 15px;
-            border-bottom: 3px solid #222;
-            transition: all 0.3s ease;
-            position: relative;
-            cursor: pointer;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 90% 100%, 0 100%);
-        }
-
-        /* ЭФФЕКТ СВЕЧЕНИЯ ПРИ НАЖАТИИ */
-        .player-card:hover, .player-card:active {
-            border-bottom-color: var(--primary);
-            background: #1a1a1a;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(251, 255, 0, 0.15);
-        }
-
-        .player-role {
-            font-size: 0.6rem;
-            font-weight: 800;
-            color: var(--primary);
-            text-transform: uppercase;
-            display: block;
-            margin-bottom: 5px;
-            letter-spacing: 1px;
-        }
-
-        .player-nick {
-            font-size: 1.2rem;
-            font-weight: 900;
-            font-family: 'Orbitron', sans-serif;
-            text-transform: uppercase;
-        }
-
-        .match-card {
-            background: var(--card-bg);
-            padding: 25px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            border: 1px solid #222;
-            border-left: 4px solid var(--primary);
-        }
-
-        .socials {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 60px 0;
-        }
-
-        .soc-link {
-            padding: 12px 20px;
-            border: 1px solid #333;
+            background-color: #000;
             color: #fff;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.8rem;
-            text-transform: uppercase;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .yellow { color: #ffcc00; }
+        .blue { color: #00e5ff; }
+
+        /* Секция МАТЧА (раскрывающаяся) */
+        .match-box {
+            max-width: 500px;
+            margin: 20px auto;
+            border: 2px solid #333;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.1);
+        }
+
+        .match-trigger {
+            background: #1a1a1a;
+            padding: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             transition: 0.3s;
         }
 
-        .soc-link:active {
-            background: var(--primary);
-            color: #000;
+        .match-trigger:hover { background: #222; border-color: #ffcc00; }
+
+        .match-content {
+            display: none; /* Скрыто до нажатия */
+            padding: 20px;
+            background: #0a0a0a;
+            border-top: 2px solid #333;
         }
 
-        .sub-grid { opacity: 0.7; }
+        /* Стиль для видео (чтобы было адаптивным на телефоне) */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* Соотношение сторон 16:9 */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 20px; /* Отступ перед составами */
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            text-align: left;
+        }
+
+        .grid h4 { margin-top: 0; font-size: 0.8em; color: #666; text-transform: uppercase; }
+
+        .list { list-style: none; padding: 0; margin: 0; font-size: 0.9em; }
+        .list li { padding: 5px 0; border-bottom: 1px solid #111; }
+
+        .subs {
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #888;
+            border-top: 1px dashed #333;
+            padding-top: 10px;
+        }
     </style>
 </head>
 <body>
 
-<header>
-    <p class="logo-text">REVOLT</p>
-    <div style="color: #666; font-size: 0.8rem; margin-top: 10px; letter-spacing: 3px;">OFFICIAL ROSTER | 2026</div>
-</header>
-
-<div class="container">
+    <h1>Последние игры</h1>
     
-    <h2>Main / <span style="color: var(--primary)">Основа</span></h2>
-    <div class="roster-grid">
-        <div class="player-card">
-            <span class="player-role">Captain</span>
-            <div class="player-nick">Fon1m</div>
+    <div class="match-box">
+        <div class="match-trigger" onclick="toggleMatch()">
+            <span class="yellow" style="font-weight:bold">REVOLT</span>
+            <span style="background:#333; padding: 2px 10px; border-radius: 4px;">16 : 13</span>
+            <span class="blue" style="font-weight:bold">AURORA</span>
         </div>
-        <div class="player-card">
-            <span class="player-role">Entry Fragger</span>
-            <div class="player-nick">Триксис</div>
-        </div>
-        <div class="player-card">
-            <span class="player-role">Opornik</span>
-            <div class="player-nick">Лайт</div>
-        </div>
-        <div class="player-card">
-            <span class="player-role">Rifler</span>
-            <div class="player-nick">Кузя</div>
-        </div>
-        <div class="player-card">
-            <span class="player-role">Sniper</span>
-            <div class="player-nick">peek?</div>
+
+        <div id="matchDetails" class="match-content">
+            
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                    title="YouTube video player" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <h4>Lineup Revolt</h4>
+                    <ul class="list">
+                        <li>⚡ Fon1m</li>
+                        <li>⚡ peek?</li>
+                        <li>⚡ Триксис</li>
+                        <li>⚡ Gloderi</li>
+                        <li>⚡ l4mice</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="blue">Lineup Aurora</h4>
+                    <ul class="list">
+                        <li>👤 Easyyy</li>
+                        <li>👤 k1toemy</li>
+                        <li>👤 90</li>
+                        <li>👤 Benzo</li>
+                        <li>👤 Shumniy</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="subs">
+                <b class="yellow">ЗАПАС:</b> Кузя, Лайт.
+            </div>
         </div>
     </div>
 
-    <h2>Reserve / <span style="color: #666">Запас</span></h2>
-    <div class="roster-grid sub-grid">
-        <div class="player-card">
-            <span class="player-role">Substitute</span>
-            <div class="player-nick">Gloderik</div>
-        </div>
-        <div class="player-card">
-            <span class="player-role">Substitute</span>
-            <div class="player-nick">l4mice</div>
-        </div>
-        <div class="player-card">
-            <span class="player-role">Substitute</span>
-            <div class="player-nick">Veillon</div>
-        </div>
-    </div>
-
-    <h2>Match / <span style="color: var(--primary)">Матч</span></h2>
-    <div class="match-card">
-        <div style="font-weight: bold; font-family: 'Orbitron';">REVOLT</div>
-        <div style="color: var(--primary); font-weight: 900;">VS</div>
-        <div style="color: #666; font-family: 'Orbitron';">AURORA</div>
-    </div>
-
-    <div class="socials">
-        <a href="https://t.me/Revolt_Team12" target="_blank" class="soc-link">Telegram</a>
-        <a href="https://www.tiktok.com/@fon1m12" target="_blank" class="soc-link">TikTok</a>
-        <a href="https://www.twitch.tv/fon1m12" target="_blank" class="soc-link">Twitch</a>
-    </div>
-
-</div>
+    <script>
+        function toggleMatch() {
+            var div = document.getElementById("matchDetails");
+            if (div.style.display === "block") {
+                div.style.display = "none";
+            } else {
+                div.style.display = "block";
+            }
+        }
+    </script>
 
 </body>
 </html>
