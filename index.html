@@ -3,169 +3,156 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Team Revolt | Official</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;600;800&display=swap" rel="stylesheet">
+<title>REVOLT TEAM</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Exo+2:wght@300;600&display=swap" rel="stylesheet">
 
 <style>
 
 :root{
---primary:#fbff00;
---bg:#050505;
---card:#111;
+--yellow:#fbff00;
+--bg:#060606;
+--panel:#111;
 --text:#fff;
 }
 
 body{
 margin:0;
-font-family:'Exo 2',sans-serif;
-background: radial-gradient(circle at top,#111 0%,#050505 60%);
+background:var(--bg);
 color:var(--text);
+font-family:'Exo 2',sans-serif;
 }
 
-/* фон сетка */
-
-body::before{
-content:"";
-position:fixed;
-width:100%;
-height:100%;
-background-image:
-linear-gradient(rgba(251,255,0,0.05) 1px, transparent 1px),
-linear-gradient(90deg, rgba(251,255,0,0.05) 1px, transparent 1px);
-background-size:40px 40px;
-z-index:-1;
-}
-
-/* header */
+/* HEADER */
 
 header{
 text-align:center;
-padding:70px 20px 40px;
+padding:80px 20px;
+border-bottom:1px solid #222;
 }
 
 .logo{
 font-family:'Orbitron';
-font-size:clamp(3rem,10vw,5rem);
+font-size:70px;
 letter-spacing:12px;
-color:var(--primary);
+color:var(--yellow);
 text-shadow:0 0 20px rgba(251,255,0,0.6);
-margin:0;
 }
 
 .subtitle{
-color:#666;
+color:#777;
 letter-spacing:3px;
-font-size:0.8rem;
 margin-top:10px;
 }
 
-/* container */
+/* GRID */
 
 .container{
-width:95%;
-max-width:1100px;
+max-width:1200px;
 margin:auto;
-}
+padding:40px 20px;
 
-/* titles */
-
-h2{
-font-family:'Orbitron';
-border-left:4px solid var(--primary);
-padding-left:15px;
-margin:40px 0 20px;
-text-transform:uppercase;
-}
-
-/* grid */
-
-.roster{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px;
 }
 
-/* player card */
+/* PANELS */
 
-.card{
-background:var(--card);
-padding:25px;
+.panel{
+
+background:var(--panel);
+
 border:1px solid #222;
+padding:25px;
+
+position:relative;
+
 transition:0.3s;
-clip-path:polygon(0 0,100% 0,100% 85%,90% 100%,0 100%);
+
 }
 
-.card:hover{
+.panel::before{
+
+content:"";
+position:absolute;
+top:0;
+left:0;
+height:3px;
+width:100%;
+background:var(--yellow);
+
+}
+
+.panel:hover{
+
 transform:translateY(-6px);
-border-color:var(--primary);
-box-shadow:0 0 20px rgba(251,255,0,0.2);
+
+box-shadow:0 0 25px rgba(251,255,0,0.15);
+
+}
+
+/* TITLES */
+
+.panel h2{
+
+font-family:'Orbitron';
+font-size:18px;
+margin-bottom:20px;
+}
+
+/* PLAYER */
+
+.player{
+
+padding:10px 0;
+border-bottom:1px solid #1f1f1f;
+
+display:flex;
+justify-content:space-between;
+
 }
 
 .role{
-font-size:0.7rem;
-color:var(--primary);
+color:var(--yellow);
+font-size:12px;
 text-transform:uppercase;
-font-weight:800;
-letter-spacing:1px;
 }
 
-.nick{
-font-family:'Orbitron';
-font-size:1.3rem;
-margin-top:6px;
+/* NO MATCH */
+
+.nomatch{
+
+text-align:center;
+padding:40px 0;
+color:#777;
+
+font-size:18px;
+
 }
 
-/* match */
-
-.match{
-background:#111;
-padding:25px;
-display:flex;
-justify-content:space-around;
-align-items:center;
-border-left:4px solid var(--primary);
-margin-top:30px;
-}
-
-.team{
-font-family:'Orbitron';
-font-size:1.2rem;
-}
-
-.vs{
-color:var(--primary);
-font-weight:900;
-}
-
-/* socials */
+/* SOCIAL */
 
 .socials{
 display:flex;
-justify-content:center;
-gap:15px;
-margin:60px 0;
+gap:10px;
 flex-wrap:wrap;
 }
 
 .social{
-padding:12px 22px;
 border:1px solid #333;
+padding:10px 16px;
 text-decoration:none;
 color:#fff;
+font-size:12px;
 font-weight:700;
-font-size:0.8rem;
-text-transform:uppercase;
-transition:0.3s;
+transition:0.2s;
 }
 
 .social:hover{
-background:var(--primary);
+background:var(--yellow);
 color:#000;
-}
-
-.sub{
-opacity:0.6;
 }
 
 </style>
@@ -175,65 +162,81 @@ opacity:0.6;
 
 <header>
 
-<h1 class="logo">REVOLT</h1>
-<div class="subtitle">OFFICIAL ROSTER | 2026</div>
+<div class="logo">REVOLT</div>
+<div class="subtitle">OFFICIAL ROSTER 2026</div>
 
 </header>
 
 <div class="container">
 
-<h2>Main / Основа</h2>
+<!-- СОСТАВ -->
 
-<div class="roster">
+<div class="panel">
 
-<div class="card">
-<div class="role">Captain</div>
-<div class="nick">Fon1m</div>
+<h2>MAIN ROSTER</h2>
+
+<div class="player">
+<span>Fon1m</span>
+<span class="role">Captain</span>
 </div>
 
-<div class="card">
-<div class="role">Player</div>
-<div class="nick">k1t</div>
+<div class="player">
+<span>k1t</span>
+<span class="role">Player</span>
 </div>
 
-<div class="card">
-<div class="role">Player</div>
-<div class="nick">Abybelka</div>
+<div class="player">
+<span>Abybelka</span>
+<span class="role">Player</span>
 </div>
 
-<div class="card">
-<div class="role">Sniper</div>
-<div class="nick">peek?</div>
-</div>
-
-</div>
-
-<h2>Reserve / Запас</h2>
-
-<div class="roster sub">
-
-<div class="card">
-<div class="role">Substitute</div>
-<div class="nick">Lite</div>
+<div class="player">
+<span>peek?</span>
+<span class="role">Sniper</span>
 </div>
 
 </div>
 
-<h2>Match / Матч</h2>
+<!-- ЗАПАС -->
 
-<div class="match">
+<div class="panel">
 
-<div class="team">REVOLT</div>
-<div class="vs">VS</div>
-<div class="team" style="color:#666">AURORA</div>
+<h2>RESERVE</h2>
+
+<div class="player">
+<span>Lite</span>
+<span class="role">Sub</span>
+</div>
 
 </div>
+
+<!-- МАТЧИ -->
+
+<div class="panel">
+
+<h2>MATCHES</h2>
+
+<div class="nomatch">
+Сейчас нет матчей
+</div>
+
+</div>
+
+<!-- СОЦСЕТИ -->
+
+<div class="panel">
+
+<h2>SOCIAL</h2>
 
 <div class="socials">
 
 <a class="social" href="https://t.me/Revolt_Team12">Telegram</a>
+
 <a class="social" href="https://www.tiktok.com/@fon1m12">TikTok</a>
+
 <a class="social" href="https://www.twitch.tv/fon1m12">Twitch</a>
+
+</div>
 
 </div>
 
